@@ -17,9 +17,6 @@ using System.Windows.Shapes;
 
 namespace Workshop01
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         private List<Note> notes { get; set; }
@@ -32,12 +29,10 @@ namespace Workshop01
 
             notes = new List<Note>();
 
-
             if (File.Exists("notes.json"))
             {
                 notes = JsonConvert.DeserializeObject<Note[]>(File.ReadAllText("notes.json")).ToList();
             }
-
 
             if (notes.Count == 0)
             {
@@ -46,7 +41,6 @@ namespace Workshop01
             else
             {
                 notes.ForEach(note => { addButtonToPanel(note, sp_buttons); });
-
                 SetCurrentIndex(0);
             }
         }
